@@ -1,175 +1,24 @@
-Program:
-
-class Bike9
-
-{
-
-final int speedlimit=90;//final variable
-
-void run()
-
-{
-
-speedlimit=400; //error
-
+interface Printable {
+    void print();
 }
 
+interface Showable {
+    void show();
 }
 
-class St1
+class A7 implements Printable, Showable {
+    public void print() {
+        System.out.println("Hello");
+    }
 
-{
+    public void show() {
+        System.out.println("Welcome to Doraemon");
+    }
 
-public static void main (String a[])
-
-{
-
-Bike9 s1= new Bike9();
-
-s1.run();
-
+    // The main method should be static
+    public static void main(String args[]) {
+        A7 obj = new A7(); 
+        obj.print();  
+        obj.show();  
+    }
 }
-
-}
-
-Output:
-
-St1.java:8: error: cannot assign a value to final variable speedlimit
-
-speedlimit=400; //error
-
-^
-
-1 error
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-b.final method
-
-Program:
-
-class Bike{
-
-final void run(){System.out.println("running");} }
-
-class Honda extends
-
-Bike{ void run() //error
-
-{
-
-System.out.println("running safely with 100kmph");
-
-}
-
-public static void main(String args[])
-
-{
-
-Honda honda= new
-
-Honda(); honda.run();
-
-}
-
-}
-
-Output:
-
-Bike.java:4: error: run() in Honda cannot override run() in Bike
-
-Bike{ void run() //error
-
-           ^
-
-  overridden method is final
-
-1 error
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-c.final class	
-
-Program:
-
-final class Bike{}  
-
-  		class Honda1 extends Bike//error can not be inherited
-
-{  void run(){System.out.println("running safely with 100kmph");}  
-
-    		  public static void main(String args[]){  
-
-  		Honda1 honda= new Honda1();  
-
- 		 honda.run();  
-
- 		 }  }
-
-Output:
-
-Bike.java:2: error: cannot inherit from final Bike
-
-                class Honda1 extends Bike//error can not be inherited
-
-                                     ^
-
-1 error
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
