@@ -1,163 +1,175 @@
-Creating registration:
+Program:
 
+class Bike9
 
+{
 
-<!DOCTYPE html>
+final int speedlimit=90;//final variable
 
-<html>
+void run()
 
-<head>
+{
 
-    <title>Registration Page</title>
+speedlimit=400; //error
 
-    <style>
+}
 
-        body {
+}
 
-            font-family: Arial, sans-serif;
+class St1
 
-            margin: 0;
+{
 
-            padding: 0;
+public static void main (String a[])
 
-            background-color: #988c8c;
+{
 
-        }
+Bike9 s1= new Bike9();
 
-        form {
+s1.run();
 
-            background-color: #fff;
+}
 
-            max-width: 600px;
+}
 
-            margin: 50px auto;
+Output:
 
-            padding: 20px;
+St1.java:8: error: cannot assign a value to final variable speedlimit
 
-            border-radius: 10px;
+speedlimit=400; //error
 
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+^
 
-        }
+1 error
 
-        h1 {
 
-            text-align: center;
 
-        }
 
-        label {
 
-            font-weight: bold;
 
-        }
 
-        input[type="text"],
 
-        textarea {
 
-            width: 100%;
 
-            padding: 10px;
 
-            margin-bottom: 10px;
 
-            border-radius: 5px;
 
-            border: 1px solid #ccc;
 
-            box-sizing: border-box;
 
-        }
 
-        input[type="radio"] {
 
-            margin-right: 10px;
 
-        }
 
-        input[type="submit"],
+b.final method
 
-        input[type="button"] {
+Program:
 
-            padding: 10px 20px;
+class Bike{
 
-            border: none;
+final void run(){System.out.println("running");} }
 
-            border-radius: 5px;
+class Honda extends
 
-            background-color: #988c8c;
+Bike{ void run() //error
 
-            color: #fff;
+{
 
-            cursor: pointer;
+System.out.println("running safely with 100kmph");
 
-            margin-left: 90px;
+}
 
-        }
+public static void main(String args[])
 
-    </style>
+{
 
-</head>
+Honda honda= new
 
-<body>
+Honda(); honda.run();
 
-    <form id="Reset">
+}
 
-        <h1>Student Registration Form</h1>
+}
 
-        <label>Firstname:</label>
+Output:
 
-        <input type="text" name="firstname" size="30"/><br>
+Bike.java:4: error: run() in Honda cannot override run() in Bike
 
-        <label>Middlename:</label>
+Bike{ void run() //error
 
-        <input type="text" name="middlename" size="30"/><br>
+           ^
 
-        <label>Lastname:</label>
+  overridden method is final
 
-        <input type="text" name="lastname" size="30"/><br><br>
+1 error
 
-        
 
-        <label>Gender:</label><br>
 
-        <input type="radio" name="gender" value="male" /> Male
 
-        <input type="radio" name="gender" value="female"/> Female <br><br>
 
-        
 
-        <label>Phone:</label>
 
-        <input type="text" name="country code" value="+91" size="2"/>
 
-        <input type="text" name="phone" size="10"/><br><br>
 
-        
 
-        <label>Address:</label><br>
 
-        <textarea cols="80" rows="5" name="address"></textarea><br><br>
 
-        
 
-        <input type="submit" name="submit" value="Submit">
 
-        <input type="button" value="Reset" onClick="fun()"/>
 
-        <script> 
 
-            function fun(){
 
-                document.getElementById("Reset").reset();
 
-            }
 
-        </script>
 
-    </form>
 
-</body>
 
-</html>
+
+
+
+c.final class	
+
+Program:
+
+final class Bike{}  
+
+  		class Honda1 extends Bike//error can not be inherited
+
+{  void run(){System.out.println("running safely with 100kmph");}  
+
+    		  public static void main(String args[]){  
+
+  		Honda1 honda= new Honda1();  
+
+ 		 honda.run();  
+
+ 		 }  }
+
+Output:
+
+Bike.java:2: error: cannot inherit from final Bike
+
+                class Honda1 extends Bike//error can not be inherited
+
+                                     ^
+
+1 error
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
