@@ -1,1 +1,28 @@
-public class ExceptionDemo Department of Information Technology, VJIT Page 23 Java Programming Lab Manual public static void main(String args[]) int a.b.c: Scanner in=new Scanner (System.in): /*IMPLEMENTATION OF ARITHMETIC EXCEPTION / System.out.print("\nPLEASE ENTER TWO NUMBER FOR DIVISION: "): a=in.nextInt(); b=in.nextint0: try System.out.printin("I AM IN TRY BLOCK 1"): c=a/b. System.out.printIn("\nDIVISION OF TWO NUMBER IS:"+c): catch(InputMismatchException e) System.out.printin("\nl AM IN CATCH BLOCK 1"); System.out.printin("\n CHECK INPUT \n"); System.out.printin(e); catch(ArithmeticException e) System.out.printin("\nl AM IN CATCH BLOCK 1"): System.out.printin("\nDIVISION BY ZERO IS NOT POSSIBLE
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class ExceptionDemo {
+    public static void main(String args[]) {
+        int a, b, c;
+        Scanner in = new Scanner(System.in);
+
+        System.out.print("\nPLEASE ENTER TWO NUMBERS FOR DIVISION: ");
+        a = in.nextInt();
+        b = in.nextInt();
+
+        try {
+            System.out.println("I AM IN TRY BLOCK 1");
+            c = a / b;
+            System.out.println("\nDIVISION OF TWO NUMBERS IS: " + c);
+        } catch (InputMismatchException e) {
+            System.out.println("\nI AM IN CATCH BLOCK 1");
+            System.out.println("\nCHECK INPUT \n");
+            System.out.println(e);
+        } catch (ArithmeticException e) {
+            System.out.println("\nI AM IN CATCH BLOCK 2");
+            System.out.println("\nDIVISION BY ZERO IS NOT POSSIBLE\n");
+        }
+ System.out.println("END OF ARTHEMATIC EXECPTION CONCEPT");
+    }
+     
+}
