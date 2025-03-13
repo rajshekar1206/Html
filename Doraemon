@@ -1,46 +1,63 @@
-//save as DoubleCalculator.java
+#include <stdio.h>
+#include <stdlib.h>
 
-package calculator;
+int mutex = 1;  // Mutex for controlling critical section
+int full = 0;   // Number of items in the buffer
+int empty = 10; // Number of empty slots in the buffer
+int x = 0;      // Item counter
 
-public class DoubleCalculator {
-
-    public double add(double a, double b) {
-        return a + b;
-    }
-
-    public double sub(double a, double b) {
-        return a - b;
-    }
-
-    public double mul(double a, double b) {
-        return a * b;
-    }
-
-    public double div(double a, double b) {
-        return a / b;
-    }
+void procedure() {
+    --mutex;     // Enter critical section
+    ++full;      // Producer produces an item
+    --empty;     // Decrease the empty space
+    x++;         // Increase the item count
+    printf("Producer produces item %d\n", x);
+    ++mutex;     // Exit critical section
 }
 
-//save as Calc.java
-
-import calculator.DoubleCalculator;
-
-public class Calc {
-
-    public static void main(String args[]) {
-        DoubleCalculator c1 = new DoubleCalculator();
-        double r;
-
-        r = c1.add(10.0, 20.0);
-        System.out.println("sum = " + r);
-
-        r = c1.sub(10.0, 20.0);
-        System.out.println("diff = " + r);
-
-        r = c1.mul(10.0, 20.0);
-        System.out.println("product = " + r);
-
-        r = c1.div(10.0, 20.0);
-        System.out.println("div = " + r);
-    }
+void consumer() {
+    --mutex;     // Enter critical section
+    --full;      // Consumer consumes an item
+    ++empty;     // Increase the empty space
+    printf("Consumer consumes item %d\n", x);
+    x--;         // Decrease the item count
+    ++mutex;     // Exit critical section
 }
+
+int main() {
+    int n, i;
+    printf("1. Press 1 for Producer\n2. Press 2 for Consumer\n3. Press 3 for Exit\n");
+
+    for (i = 1; i > 0; i++) {
+        printf("Enter your choice: ");
+        scanf("%d", &n);
+
+        switch (n) {
+            case 1:
+                if (mutex == 1 && empty != 0) {
+                    procedure();
+                } else {
+                    printf("Buffer is full!\n");
+                }
+                break;
+
+            case 2:
+                if (mutex == 1 && full != 0) {
+                    consumer();
+                } else {
+                    printf("Buffer is empty!\n");
+                }
+                break;
+
+            case 3:
+                //printf("Exiting...\n");
+                exit(0);
+
+            default:
+                printf("Invalid choice, try again!\n");
+        }
+    }
+
+    return 0;
+}
+
