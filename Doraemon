@@ -5,19 +5,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-
-/**
- * Servlet implementation class HelloServlet
- */
-@WebServlet("/HelloServlet")
-public class HelloServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public HelloServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-}
+@WebServlet("/HelloServlet1")
+public class HelloServlet1 extends HttpServlet{
+	private static final long serialVersionUID=1L;
+	public HelloServlet1(){
+		super();
+		}
+	protected void deGet(HttpServeltRequest request,HttpServletResponse response) throws ServletException,IOException{
+		PrintWriter pw=respomnse.getWriter();
+		String s=request.getParameter("t1");
+		pw.println("<h1>Hello,"+s);
+		pw.close();
+	} 
+	
