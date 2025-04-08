@@ -1,20 +1,37 @@
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
-@WebServlet("/HelloServlet1")
-public class HelloServlet1 extends HttpServlet{
-	private static final long serialVersionUID=1L;
-	public HelloServlet1(){
-		super();
-		}
-	protected void deGet(HttpServeltRequest request,HttpServletResponse response) throws ServletException,IOException{
-		PrintWriter pw=respomnse.getWriter();
-		String s=request.getParameter("t1");
-		pw.println("<h1>Hello,"+s);
-		pw.close();
-	} 
-	
+// Program to illustrate Multithreading and Multitasking
+
+class SleepTest extends Thread {
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+            System.out.println(i);
+        }
+    }
+}
+
+class SleepTest2 extends Thread {
+    public void run() {
+        for (int i = 5; i < 10; i++) {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+            System.out.println(i);
+        }
+    }
+}
+
+public class MultiThreadDemo {
+    public static void main(String[] args) {
+        SleepTest t1 = new SleepTest();
+        SleepTest2 t2 = new SleepTest2();
+
+        t1.start();
+        t2.start();
+    }
+}
