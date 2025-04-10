@@ -1,37 +1,51 @@
-// Program to illustrate Multithreading and Multitasking
+#include <stdio.h>
 
-class SleepTest extends Thread {
-    public void run() {
-        for (int i = 1; i <= 5; i++) {
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                System.out.println(e);
+void implementWorstFit(int blockSize[], int blocks, int processSize[], int process) {
+    int allocation[process], occupied[blocks];
+    
+    for (int i = 0; i < process; i++) {
+        allocation[i] = -1;
+    }
+    
+    for (int i = 0; i < blocks; i++) {
+        occupied[i] = 0;
+    }
+
+    for (int i = 0; i < process; i++) {
+        int indexPlaced = -1;
+
+        for (int j = 0; j < blocks; j++) {
+            if (blockSize[j] >= processSize[i] && !occupied[j]) {
+                if (indexPlaced == -1 || blockSize[j] > blockSize[indexPlaced]) {
+                    indexPlaced = j;
+                }
             }
-            System.out.println(i);
         }
+
+        if (indexPlaced != -1) {
+            allocation[i] = indexPlaced;
+            occupied[indexPlaced] = 1;
+            blockSize[indexPlaced] -= processSize[i];
+        }
+    }
+
+    printf("Process No.\tProcess Size\tBlock no.\n");
+    for (int i = 0; i < process; i++) {
+        printf("%d\t\t%d\t\t", i + 1, processSize[i]);
+        if (allocation[i] != -1)
+            printf("%d\n", allocation[i] + 1);
+        else
+            printf("Not Allocated\n");
     }
 }
 
-class SleepTest2 extends Thread {
-    public void run() {
-        for (int i = 5; i < 10; i++) {
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                System.out.println(e);
-            }
-            System.out.println(i);
-        }
-    }
-}
+int main() {
+    int blockSize[] = {100, 50, 30, 120, 35};
+    int processSize[] = {40, 10, 30, 60};
+    int blocks = sizeof(blockSize) / sizeof(blockSize[0]);
+    int process = sizeof(processSize) / sizeof(processSize[0]);
 
-public class MultiThreadDemo {
-    public static void main(String[] args) {
-        SleepTest t1 = new SleepTest();
-        SleepTest2 t2 = new SleepTest2();
+    implementWorstFit(blockSize, blocks, processSize, process);
 
-        t1.start();
-        t2.start();
-    }
+    return 0;
 }
